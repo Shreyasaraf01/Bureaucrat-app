@@ -1,0 +1,63 @@
+### **1. Technical Questions:**
+
+**Q1: What is the Least Significant Bit (LSB) method, and how is it used in your project?**
+- **Answer**: The Least Significant Bit (LSB) method is a technique used in steganography where the least significant bit of each pixel's color value is replaced with a bit from the hidden message. Since the change is minimal, it does not noticeably alter the image to the human eye. In my project, the LSB method is used to encode a secret message by modifying the least significant bits of the pixel values in an image, specifically in PNG format, to embed the message without perceptibly changing the image.
+
+**Q2: What image file formats does your tool support? Why did you choose PNG?**
+- **Answer**: Currently, the tool supports PNG format. PNG was chosen because it uses lossless compression, meaning that no data is lost when saving or loading the image, which is crucial for preserving the integrity of the hidden message. JPEG, for example, uses lossy compression, which could distort the encoded message and make it more detectable.
+
+**Q3: How does your tool encode and decode messages?**
+- **Answer**: The tool encodes a message by converting it into binary and then embedding this binary data into the least significant bit of each pixel's color value in the image. For decoding, the tool extracts the LSB from each pixel to reconstruct the binary message, which is then converted back into readable text. The message is embedded sequentially from the image's pixels starting from the top-left corner.
+
+**Q4: What are some limitations of the LSB technique, and how do you plan to overcome them?**
+- **Answer**: One limitation of the LSB technique is its susceptibility to detection through statistical analysis, as altering the least significant bit does not significantly affect the image’s appearance but can still be noticed using tools that analyze pixel values. Additionally, the size of the message is limited by the number of available pixels in the image. To overcome these limitations, I plan to add encryption before encoding the message and explore more complex methods like using multiple bits per pixel or incorporating a higher-order bit encoding system.
+
+**Q5: What steps have you taken to ensure the integrity of the encoded message?**
+- **Answer**: I have implemented basic error-handling features in the tool, ensuring that the image is of the correct format and that the message is not too large for the selected image. Additionally, the tool provides feedback in case of invalid inputs (e.g., wrong file format or excessively large message). To further improve integrity, I could add checksums or hashes to ensure that the message hasn't been altered during transmission or extraction.
+
+**Q6: How does the encoding/decoding process handle large messages?**
+- **Answer**: The encoding process is limited by the size of the image (i.e., the number of pixels). For large messages, the image must have enough pixels to accommodate the binary representation of the message. If the message is too large for the image, the tool informs the user. One way to optimize this is by using larger images or employing message compression techniques before encoding.
+
+**Q7: How does your tool handle edge cases, such as invalid image files or large message sizes?**
+- **Answer**: The tool checks whether the input file is an image (specifically PNG format) before attempting to encode or decode the message. If the file is not valid, an error message is displayed. For large messages, the tool ensures that the message fits within the available pixel space in the image. If the message is too large, the tool will notify the user that it cannot encode the message into the current image.
+
+### **2. Design and Approach:**
+
+**Q1: Why did you choose to implement this tool in Python?**
+- **Answer**: Python was chosen for this tool because it is easy to learn and use, especially for image manipulation and handling. Python has powerful libraries like `Pillow` for image processing and `argparse` for managing command-line arguments, making it an ideal choice for this project. Moreover, Python’s readability and concise syntax helped speed up the development process.
+
+**Q2: How did you ensure that the hidden message doesn't alter the image noticeably?**
+- **Answer**: The LSB method ensures that the changes to the image are minimal, affecting only the least significant bit of each pixel’s color value. Since these changes are very small, they do not significantly affect the visual quality of the image. I also used PNG format, which supports lossless compression, to prevent further distortions during image encoding or decoding.
+
+**Q3: Can you explain the choice of command-line interface (CLI) for this tool?**
+- **Answer**: A command-line interface (CLI) was chosen for simplicity and ease of use, especially since the tool is designed for educational purposes. It allows the user to quickly encode and decode messages via simple commands, which is ideal for a demonstration of the concept. A graphical user interface (GUI) could be added in the future for better user experience, but the CLI serves the tool’s current purpose effectively.
+
+**Q4: Did you use any specific Python libraries for this project? If yes, how did they help?**
+- **Answer**: Yes, I used the `Pillow` library for image manipulation, such as opening, reading, and writing PNG images. It simplifies the process of working with image files. Additionally, I used `argparse` for handling command-line arguments, making it easy to specify the image file and message to be encoded or decoded via CLI.
+
+### **3. Security and Optimization:**
+
+**Q1: How secure is this tool? Could the hidden message be easily extracted?**
+- **Answer**: The security of the tool is limited because the LSB method can be easily detected using statistical analysis or specialized tools that analyze pixel data. Since it does not provide any encryption or obfuscation, a determined attacker could potentially extract the hidden message. To increase security, I plan to add an encryption layer to the message before embedding it into the image, making it harder to detect or extract.
+
+**Q2: What improvements could you make to increase the security or performance of this tool?**
+- **Answer**: To improve security, I would add encryption (e.g., AES) to the message before embedding it in the image. This would make the message unreadable without the correct decryption key. To improve performance, I could implement more advanced steganographic methods, like using multiple bits per pixel or applying compression algorithms to reduce the size of the message before encoding.
+
+**Q3: How would you scale this tool to handle larger images or messages?**
+- **Answer**: To handle larger messages, the tool could be optimized by using larger images or processing multiple images to store a single large message. Additionally, for larger-scale processing, I could explore parallel processing to speed up encoding and decoding times, especially when working with high-resolution images.
+
+### **4. Future Enhancements:**
+
+**Q1: How could you extend this project to support other media types (e.g., audio, video)?**
+- **Answer**: Steganography techniques can also be applied to other media types like audio and video. For audio, I could embed the hidden message in the least significant bits of audio samples. For video, I could apply similar methods to individual frames or audio tracks. However, video-based steganography is more complex and would require processing both the video and audio streams.
+
+**Q2: What other features or functionalities would you add if you had more time?**
+- **Answer**: If I had more time, I would add encryption to the messages for added security, support for multiple file formats (including audio and video), and a graphical user interface (GUI) to make the tool more user-friendly. Additionally, I would implement detection mechanisms to check for possible image manipulation after encoding.
+
+### **5. General Questions:**
+
+**Q1: What was the most challenging part of this project?**
+- **Answer**: The most challenging part was ensuring that the tool can handle edge cases such as very large messages and invalid image files. Additionally, optimizing the tool to handle these cases without errors and ensuring that the encoded message remains hidden without perceptibly altering the image was also a challenge.
+
+**Q2: How do you ensure the reliability of this tool in real-world use cases?**
+- **Answer**: The reliability of the tool is ensured through proper error handling, such as validating image files and checking for valid message sizes. The tool also notifies users when the encoding is not possible due to size limitations. For further reliability, I could implement unit tests to cover various scenarios and validate the tool's behavior under different conditions.
