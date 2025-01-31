@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload File</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin-top: 20px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .cancel-button {
+            background-color: #f44336;
+        }
+        .cancel-button:hover {
+            background-color: #d32f2f;
+        }
+        .error-list {
+            color: red;
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Upload a File</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <label for="id_title">Title:</label>
+        <br>
+        {{ form.title }}
+        <br><br>
+        
+        <label for="id_category">Category:</label>
+        <br>
+        {{ form.category }}
+        <br><br>
+        
+        <label for="id_file">File:</label>
+        <br>
+        {{ form.file }}
+        <br><br>
+        
+        <button type="submit">Upload</button>
+        <a href="{% url 'dashboard' %}">
+            <button type="button" class="cancel-button">Cancel</button>
+        </a>
+    </form>
+    
+    {% if form.errors %}
+        <ul class="error-list">
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>

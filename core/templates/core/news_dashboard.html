@@ -1,0 +1,9 @@
+<h1>Personalized News Dashboard</h1>
+<ul>
+    {% for article in news %}
+        <li>
+            <h3><a href="{{ article.url }}" target="_blank">{{ article.title }}</a></h3>
+            <p>{{ article.description }}</p>
+        </li>
+    {% endfor %}
+</ul>

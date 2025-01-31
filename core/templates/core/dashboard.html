@@ -1,0 +1,4 @@
+<h1>Your Documents</h1>
+{% for doc in documents %}
+    <p>{{ doc.title }} ({{ doc.get_category_display }})</p>
+{% endfor %}

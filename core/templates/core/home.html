@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Bureaucrat</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #2C3E50; /* Dark blue background */
+            background: linear-gradient(to right, #2C3E50, #3498DB); /* Gradient background */
+            color: white;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+            color: #2C3E50;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            font-weight: normal;
+            color: #2C3E50;
+        }
+
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        a {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #3498DB;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.2s;
+        }
+
+        a:hover {
+            background-color: #2980B9;
+            transform: scale(1.05);
+        }
+
+        footer {
+            margin-top: 20px;
+            font-size: 1em;
+            color: #2C3E50;
+        }
+
+        footer p {
+            font-size: 1.2em;
+        }
+
+        footer a {
+            color: #3498DB;
+            text-decoration: none;
+            font-weight: normal;
+            font-size: 1.1em;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+            color: #2980B9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Bureaucrat</h1>
+        <h2>Your Trusted Solution for Document Management</h2>
+
+        <p>
+            Bureaucrat is an intuitive and efficient platform that helps individuals and organizations manage, 
+            store, and categorize their important documents. Whether it’s legal, financial, or policy documents, 
+            Bureaucrat ensures that your files are securely stored and easy to access at any time.
+        </p>
+
+        <p>
+            Our user-friendly interface and powerful document categorization features make it easier to stay 
+            organized and focused on your work. Bureaucrat helps you streamline your document management process,
+            saving time and reducing the hassle of dealing with paperwork.
+        </p>
+
+        <div class="cta-buttons">
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'signup' %}">Signup</a>
+        </div>
+
+        <footer>
+            <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+        </footer>
+    </div>
+</body>
+</html>
