@@ -8,6 +8,10 @@ https://docs.djangoproject.com/en/5.1/howto/deployment/wsgi/
 """
 
 import os
+import nltk  # Import nltk
+
+# Download punkt tokenizer
+nltk.download('punkt')
 
 from django.core.wsgi import get_wsgi_application
 
