@@ -135,7 +135,8 @@ LOGIN_REDIRECT_URL = '/'  # Redirect after login
 LOGOUT_REDIRECT_URL = '/login/'  # Redirect after logout
 
 import os
-
+# Set the NLTK data path
+NLTK_DATA = os.environ.get('NLTK_DATA', '/opt/render/project/src/.venv/nltk_data')
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'bureaucrat-app.onrender.com']
 
 MEDIA_URL = '/media/'
