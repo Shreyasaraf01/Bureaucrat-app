@@ -4,6 +4,7 @@ Welcome to Bureaucrat App! The all-in-one platform designed to simplify the mana
 <h2>🌐 Table of Contents</h2>
 
 * About the App<br>
+* Live Demo<br>
 * Features<br>
 * Technologies Used<br>
 * Installation<br>
@@ -18,6 +19,12 @@ The Bureaucrat App was developed as part of a hackathon project, aiming to moder
 * Dashboard: Visual representation of all your uploaded documents and files.<br>
 * Summarized Overview: Quick, easy access to all uploaded documents with filtering options.<br>
 
+<h2>🌍 Live Demo</h2><br>
+
+Check out the live demo of the Bureaucrat App hosted on Render:<br>
+
+https://bureaucrat-app.onrender.com
+<br>
 <h2>💡 Features</h2>
 
 * User Authentication: Secure login and signup for users.<br>
@@ -52,19 +59,22 @@ cd Bureaucrat-app
 ```
 2. Create a virtual environment (optional but recommended)
 ```bash
-python -m venv venv
-source venv/bin/activate  # For MacOS/Linux
-venv\Scripts\activate     # For Windows
+python3 -m venv myenv
+source myenv/bin/activate  # On Windows: myenv\Scripts\activate
 ```
-3. Run the migrations
+3. Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+4. Run the migrations
 ```bash
 python manage.py migrate
 ```
-4. Run the server
+5. Run the server
 ```bash
 python manage.py runserver
 ```
-5. Open http://127.0.0.1:8000 in your browser, and you're good to go!
+6. Open http://127.0.0.1:8000 in your browser, and you're good to go!
 
 <h2>📱 Usage</h2>
 Once you've set up the app, you can start using it right away!<br>
@@ -86,5 +96,7 @@ We welcome contributions from the community! If you have any suggestions, bug fi
 <h2>📧 Contact</h2>
 Have any questions or suggestions? Feel free to reach out!<br>
 
+<h3>Shreya saraf</h3>
 * Email: shreyasaraf765@gmail.com<br>
 * GitHub: Shreyasaraf01<br>
+* Linkedin: www.linkedin.com/in/shreya-saraf-797440257
