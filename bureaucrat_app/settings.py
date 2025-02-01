@@ -136,7 +136,7 @@ LOGOUT_REDIRECT_URL = '/login/'  # Redirect after logout
 
 import os
 
-ALLOWED_HOSTS = ['bureaucrat-app.onrender.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'

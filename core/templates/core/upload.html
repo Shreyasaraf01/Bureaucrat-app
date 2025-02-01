@@ -1,77 +1,100 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload File</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
     <style>
         body {
+            background: #f8f9fa;
             font-family: Arial, sans-serif;
-            margin: 20px;
         }
-        h1 {
-            color: #333;
+
+        .upload-container {
+            max-width: 500px;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
         }
-        form {
-            margin-top: 20px;
+
+        .form-label {
+            font-weight: bold;
         }
-        button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
+
+        .form-control {
+            height: 45px;
             font-size: 16px;
-            margin-right: 10px;
         }
-        button:hover {
-            background-color: #45a049;
+
+        .btn-upload {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
         }
-        .cancel-button {
-            background-color: #f44336;
+
+        .btn-cancel {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
         }
-        .cancel-button:hover {
-            background-color: #d32f2f;
-        }
+
         .error-list {
             color: red;
+            font-size: 14px;
             margin-top: 10px;
-            padding-left: 20px;
         }
     </style>
 </head>
 <body>
-    <h1>Upload a File</h1>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        
-        <label for="id_title">Title:</label>
-        <br>
-        {{ form.title }}
-        <br><br>
-        
-        <label for="id_category">Category:</label>
-        <br>
-        {{ form.category }}
-        <br><br>
-        
-        <label for="id_file">File:</label>
-        <br>
-        {{ form.file }}
-        <br><br>
-        
-        <button type="submit">Upload</button>
-        <a href="{% url 'dashboard' %}">
-            <button type="button" class="cancel-button">Cancel</button>
-        </a>
-    </form>
-    
-    {% if form.errors %}
-        <ul class="error-list">
-            {% for field in form %}
-                {% for error in field.errors %}
-                    <li>{{ error }}</li>
-                {% endfor %}
-            {% endfor %}
-        </ul>
-    {% endif %}
+
+    <div class="container">
+        <div class="upload-container">
+            <h2 class="text-center mb-4">Upload a File</h2>
+
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label for="id_title" class="form-label">Title:</label>
+                    {{ form.title }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="id_category" class="form-label">Category:</label>
+                    {{ form.category }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="id_file" class="form-label">File:</label>
+                    {{ form.file }}
+                </div>
+
+                <button type="submit" class="btn btn-success btn-upload">Upload</button>
+                <a href="{% url 'dashboard' %}" class="btn btn-danger btn-cancel mt-2">Cancel</a>
+            </form>
+
+            {% if form.errors %}
+                <div class="error-list mt-3">
+                    <ul>
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
