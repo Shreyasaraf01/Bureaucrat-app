@@ -39,7 +39,7 @@ https://bureaucrat-app.onrender.com
 * Backend: Django (Python Framework)<br>
 * Database: SQLite (for local development)<br>
 * Authentication: Django’s built-in user authentication system<br>
-* Deployment: Heroku for free hosting (coming soon!)<br>
+* Deployment: Render<br>
 
 <h2>🛠️ Installation</h2>
 
