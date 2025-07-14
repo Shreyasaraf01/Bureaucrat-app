@@ -11,6 +11,7 @@ Welcome to Bureaucrat App! The all-in-one platform designed to simplify the mana
 * Usage<br>
 * Contributing<br>
 * Contact<br>
+
 <h2>📌 About the App</h2>
 The Bureaucrat App was developed as part of a hackathon project, aiming to modernize how government documentation and procedures are managed. Whether it's document submission, management, or keeping track of bureaucratic processes, this app handles it all with ease!
 
