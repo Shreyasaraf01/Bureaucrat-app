@@ -1,2 +1,28 @@
-.env
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django database
+db.sqlite3
+
+# Uploaded media files
 media/
+
+# Virtual environment
+venv/
+env/
+
+# Environment variables
+*.env
+
+# IDE/Editor settings
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Byte-compiled files
+*.pyc
+*.pyo
