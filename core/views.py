@@ -24,6 +24,8 @@ def login_view(request):
             login(request, user)
             next_url = request.POST.get('next', 'upload_and_summarize')  # Default redirect URL
             return redirect(next_url)
+        else:
+            messages.error(request, "Invalid username or password.")
     else:
         form = AuthenticationForm()
 
@@ -78,7 +80,6 @@ def upload_and_summarize_text(request):
         if form.is_valid():
             document = form.save(commit=False)
             document.user = request.user  # Assign the document to the logged-in user
-            document.save()
 
             file = document.file
             content = ""
@@ -89,7 +90,7 @@ def upload_and_summarize_text(request):
                     content = file.read().decode('utf-8')
                 elif file.name.endswith('.pdf'):
                     pdf_reader = PdfReader(file)
-                    content = " ".join(page.extract_text() for page in pdf_reader.pages)
+                    content = " ".join(page.extract_text() or "" for page in pdf_reader.pages)
             except Exception as e:
                 return HttpResponseBadRequest(f"Error reading file: {str(e)}")
 
@@ -101,6 +102,10 @@ def upload_and_summarize_text(request):
                     summary = "No content to summarize."
             except Exception as e:
                 summary = f"Error during summarization: {str(e)}"
+
+            # Save the summary in the Document model
+            document.summary = summary
+            document.save()
 
             # Render results
             return render(request, 'core/summarize.html', {
